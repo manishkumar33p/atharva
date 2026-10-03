@@ -1,20 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap");
 
 :root {
   --white: #ffffff;
   --cream: #fffafa;
   --blush: #f9e9eb;
   --blush-dark: #f1d2d6;
-
-  --rose: #c9828b;
-  --red: #a33e4d;
-  --burgundy: #762531;
-  --burgundy-dark: #5c1b25;
-
+  --rose: #e59aa8;
+  --red: #d96f82;
+  --burgundy: #c85f74;
+  --burgundy-dark: #a9475c;
   --text: #25191c;
   --muted: #746568;
   --light-text: #a08f92;
-
   --border: #eadbde;
 
   --heading: "Playfair Display", Georgia, serif;
@@ -32,13 +29,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-
-  background: var(--white);
-  color: var(--text);
-
   font-family: var(--body);
-
-  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+  background: var(--white);
 }
 
 button,
@@ -49,1205 +42,614 @@ select {
 }
 
 button {
-  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 
-button:focus-visible {
-  outline: 2px solid var(--rose);
-  outline-offset: 3px;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.atharva-site {
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.atharva-page {
   width: 100%;
   overflow: hidden;
   background: var(--white);
 }
 
-/* =====================================================
+.container {
+  width: min(1180px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+/* =========================================
    NAVBAR
-===================================================== */
+========================================= */
 
-.atharva-navbar {
-  position: fixed;
-
+.site-header {
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 26px 0;
+  background: transparent;
+}
 
-  z-index: 1000;
-
-  height: 82px;
-
-  padding: 0 6.5%;
-
+.nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background: rgba(255, 255, 255, 0.93);
-
-  border-bottom: 1px solid rgba(118, 37, 49, 0.08);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 
-.atharva-logo {
+.brand {
+  border: 0;
+  background: transparent;
+  padding: 0;
   display: flex;
   align-items: center;
-
-  gap: 11px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  cursor: pointer;
-}
-
-.logo-symbol {
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 50%;
-
-  background: var(--burgundy);
-
-  color: white;
-
-  font-family: var(--heading);
-
-  font-size: 23px;
-
-  box-shadow: 0 8px 20px rgba(118, 37, 49, 0.18);
-}
-
-.logo-copy {
+  gap: 13px;
+  color: var(--white);
   text-align: left;
 }
 
-.logo-copy strong {
-  display: block;
-
-  color: var(--burgundy);
-
-  font-size: 15px;
-
-  line-height: 1;
-
-  letter-spacing: 2.5px;
-}
-
-.logo-copy small {
-  display: block;
-
-  margin-top: 5px;
-
-  color: #927f82;
-
-  font-size: 7px;
-
-  letter-spacing: 1.7px;
-}
-
-.desktop-nav {
+.brand-mark {
+  width: 43px;
+  height: 43px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
   display: flex;
   align-items: center;
-
-  gap: 27px;
+  justify-content: center;
+  font-family: var(--heading);
+  font-size: 23px;
+  font-weight: 500;
 }
 
-.desktop-nav button {
-  position: relative;
-
-  padding: 5px 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #57494c;
-
-  cursor: pointer;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  transition: 0.25s ease;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.desktop-nav button::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-
-  bottom: -7px;
-
-  height: 1px;
-
-  background: var(--red);
-
-  transform: scaleX(0);
-
-  transform-origin: center;
-
-  transition: 0.25s ease;
-}
-
-.desktop-nav button:hover {
-  color: var(--red);
-}
-
-.desktop-nav button:hover::after {
-  transform: scaleX(1);
-}
-
-.nav-book {
-  border: 0;
-
-  padding: 13px 19px;
-
-  border-radius: 30px;
-
-  background: var(--burgundy);
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 10px;
+.brand-text strong {
+  font-size: 17px;
   font-weight: 700;
+  letter-spacing: 3px;
+}
 
-  box-shadow: 0 8px 22px rgba(118, 37, 49, 0.13);
+.brand-text small {
+  font-size: 7px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
 
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.main-nav button {
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 8px 0;
   transition: 0.3s ease;
 }
 
-.nav-book span {
-  margin-left: 9px;
+.main-nav button:hover {
+  color: #ffdce1;
 }
 
-.nav-book:hover {
-  background: var(--red);
+.main-nav .nav-appointment {
+  padding: 14px 19px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  transform: translateY(-2px);
+.main-nav .nav-appointment span {
+  font-size: 17px;
+}
 
-  box-shadow: 0 12px 28px rgba(118, 37, 49, 0.2);
+.main-nav .nav-appointment:hover {
+  background: var(--white);
+  color: var(--burgundy-dark);
 }
 
 .mobile-menu-button {
   display: none;
-
-  width: 40px;
-  height: 40px;
-
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
   padding: 10px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 50%;
-
-  background: white;
-
-  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
 }
 
 .mobile-menu-button span {
-  display: block;
-
+  width: 100%;
   height: 1px;
-
-  margin: 4px 0;
-
-  background: var(--burgundy);
+  background: var(--white);
 }
 
-/* =====================================================
+/* =========================================
    HERO
-===================================================== */
+========================================= */
 
 .hero-section {
   min-height: 850px;
-
-  padding: 150px 7% 70px;
-
+  height: 100vh;
+  max-height: 950px;
+  background-size: cover;
+  background-position: center;
   position: relative;
-
-  display: grid;
-
-  grid-template-columns: 1fr 0.85fr;
-
+  color: var(--white);
+  display: flex;
   align-items: center;
-
-  gap: 60px;
-
-  background:
-    radial-gradient(
-      circle at 75% 20%,
-      rgba(249, 233, 235, 0.85),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #fffafa 100%
-    );
-}
-
-.hero-section::before {
-  content: "";
-
-  position: absolute;
-
-  width: 1px;
-
-  height: 100%;
-
-  top: 0;
-
-  left: 53%;
-
-  background: rgba(118, 37, 49, 0.05);
-}
-
-.hero-background-number {
-  position: absolute;
-
-  right: 4%;
-
-  top: 130px;
-
-  color: rgba(118, 37, 49, 0.035);
-
-  font-family: var(--heading);
-
-  font-size: 180px;
-
-  line-height: 1;
-
-  pointer-events: none;
 }
 
 .hero-content {
+  padding-top: 90px;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-
-  z-index: 3;
 }
 
-.hero-eyebrow {
+.hero-copy {
+  max-width: 700px;
+}
+
+.eyebrow {
   display: flex;
-
   align-items: center;
-
-  gap: 10px;
-
-  color: var(--red);
-
-  font-size: 9px;
-
+  gap: 11px;
+  color: var(--burgundy-dark);
+  font-size: 10px;
   font-weight: 700;
-
-  letter-spacing: 2.2px;
+  letter-spacing: 2.3px;
+  margin-bottom: 24px;
 }
 
-.hero-eyebrow span {
-  width: 34px;
+.eyebrow span {
+  width: 30px;
   height: 1px;
-
-  background: var(--red);
+  background: var(--burgundy);
+  display: block;
 }
 
-.hero-title-wrap {
-  animation: heroTextIn 0.7s ease both;
+.eyebrow.light {
+  color: rgba(255, 255, 255, 0.82);
 }
 
-@keyframes heroTextIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.eyebrow.light span {
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.hero-content h1 {
-  margin: 28px 0 25px;
-
-  font-family: var(--heading);
-
-  font-size: clamp(62px, 7vw, 102px);
-
-  font-weight: 500;
-
-  line-height: 0.91;
-
-  letter-spacing: -4px;
-}
-
-.hero-content h1 em {
-  color: var(--red);
-
-  font-weight: 500;
-}
-
-.hero-content p {
-  max-width: 560px;
-
+.hero-copy h1 {
   margin: 0;
-
-  color: var(--muted);
-
-  font-size: 14px;
-
-  line-height: 1.9;
+  max-width: 720px;
+  font-family: var(--heading);
+  font-size: clamp(58px, 7vw, 98px);
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -3px;
 }
 
-.hero-buttons {
+.hero-copy p {
+  max-width: 590px;
+  margin: 32px 0 0;
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.hero-actions {
+  margin-top: 40px;
   display: flex;
-
   align-items: center;
-
   gap: 28px;
-
-  margin-top: 38px;
 }
 
 .primary-button {
   border: 0;
-
-  padding: 17px 24px;
-
-  border-radius: 30px;
-
   background: var(--burgundy);
-
-  color: white;
-
-  cursor: pointer;
-
+  color: var(--white);
+  padding: 17px 23px;
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
   font-size: 11px;
-
   font-weight: 700;
-
-  box-shadow: 0 12px 30px rgba(118, 37, 49, 0.15);
-
+  letter-spacing: 1px;
   transition: 0.3s ease;
 }
 
 .primary-button span {
-  margin-left: 10px;
+  font-size: 18px;
 }
 
 .primary-button:hover {
-  background: var(--red);
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 16px 35px rgba(118, 37, 49, 0.22);
+  background: var(--burgundy-dark);
+  transform: translateY(-2px);
 }
 
-.hero-text-button {
-  padding: 0;
+.pink-button {
+  background: var(--burgundy);
+}
 
+.text-button {
   border: 0;
-
   background: transparent;
-
-  color: var(--text);
-
-  cursor: pointer;
-
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-size: 11px;
-
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.hero-text-button span {
-  margin-left: 8px;
+.text-button span {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
 
-  color: var(--red);
+.text-button:hover span {
+  transform: translateX(5px);
+}
+
+.light-button {
+  color: var(--white);
+}
+
+.dark-button {
+  color: var(--text);
 }
 
 .hero-bottom {
-  display: flex;
-
-  align-items: flex-end;
-
-  justify-content: space-between;
-
-  margin-top: 75px;
-
-  max-width: 650px;
-}
-
-.hero-features {
-  display: flex;
-
-  gap: 42px;
-}
-
-.hero-features div {
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 10px;
-}
-
-.hero-features strong {
-  color: var(--red);
-
-  font-family: var(--heading);
-
-  font-size: 16px;
-
-  font-weight: 500;
-}
-
-.hero-features span {
-  color: #796a6d;
-
-  font-size: 8px;
-
-  font-weight: 600;
-
-  line-height: 1.6;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-}
-
-.carousel-controls {
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-}
-
-.carousel-controls > button {
-  width: 34px;
-  height: 34px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 50%;
-
-  background: white;
-
-  color: var(--burgundy);
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-.carousel-controls > button:hover {
-  background: var(--burgundy);
-
-  color: white;
-
-  border-color: var(--burgundy);
-}
-
-.carousel-dots {
-  display: flex;
-
-  gap: 6px;
-}
-
-.carousel-dots button {
-  width: 20px;
-  height: 2px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: #decacc;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.carousel-dots button.active {
-  width: 35px;
-
-  background: var(--red);
-}
-
-/* HERO VISUAL */
-
-.hero-visual {
-  position: relative;
-
-  min-height: 590px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-}
-
-.hero-photo {
-  position: relative;
-
-  width: 410px;
-  height: 535px;
-
-  border-radius: 210px 210px 25px 25px;
-
-  background-position: center;
-  background-size: cover;
-
-  box-shadow: 0 30px 70px rgba(92, 27, 37, 0.15);
-
-  animation: imageIn 0.8s ease both;
-}
-
-@keyframes imageIn {
-  from {
-    opacity: 0;
-
-    transform: scale(0.96) translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: scale(1) translateY(0);
-  }
-}
-
-.hero-photo::after {
-  content: "";
-
   position: absolute;
-
-  inset: 0;
-
-  border-radius: inherit;
-
-  background: linear-gradient(
-    180deg,
-    rgba(118, 37, 49, 0.02),
-    rgba(118, 37, 49, 0.2)
-  );
-}
-
-.hero-photo-border {
-  position: absolute;
-
-  width: 410px;
-  height: 535px;
-
-  border: 1px solid var(--pink-dark, #f1d2d6);
-
-  border-radius: 210px 210px 25px 25px;
-
-  transform: translate(23px, 22px);
-
-  z-index: -1;
-}
-
-.hero-info-card {
-  position: absolute;
-
+  bottom: 50px;
   left: 0;
-
-  bottom: 60px;
-
-  width: 205px;
-
-  padding: 24px;
-
-  background: white;
-
-  border: 1px solid var(--border);
-
-  box-shadow: 0 22px 50px rgba(92, 27, 37, 0.1);
-
-  animation: floatingCard 4s ease-in-out infinite;
-}
-
-@keyframes floatingCard {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-.hero-info-card span {
-  color: var(--red);
-
-  font-size: 8px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-.hero-info-card strong {
-  display: block;
-
-  margin-top: 13px;
-
-  font-family: var(--heading);
-
-  font-size: 23px;
-
-  font-weight: 500;
-
-  line-height: 1.1;
-}
-
-.hero-info-card button {
-  margin-top: 18px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: var(--red);
-
-  cursor: pointer;
-
-  font-size: 9px;
-
-  font-weight: 700;
-}
-
-.hero-badge {
-  position: absolute;
-
-  right: -15px;
-
-  top: 45px;
-
-  width: 115px;
-  height: 115px;
-
-  border: 1px solid var(--pink-dark, #f1d2d6);
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.92);
-
+  width: 100%;
   display: flex;
-
-  flex-direction: column;
-
   align-items: center;
-
-  justify-content: center;
-
-  transform: rotate(10deg);
+  justify-content: space-between;
 }
 
-.hero-badge span {
-  color: var(--burgundy);
+.hero-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
 
+.hero-counter strong {
   font-family: var(--heading);
-
-  font-size: 15px;
+  font-size: 25px;
+  font-weight: 400;
 }
 
-.hero-badge small {
-  margin-top: 5px;
-
-  color: var(--rose);
-
-  font-size: 6px;
-
-  letter-spacing: 1.3px;
+.hero-counter span {
+  font-size: 11px;
+  opacity: 0.6;
 }
 
-/* =====================================================
-   COMMON
-===================================================== */
-
-.section-label {
-  color: var(--red);
-
-  font-size: 8px;
-
-  font-weight: 800;
-
-  letter-spacing: 2.2px;
+.hero-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* =====================================================
+.hero-dots button {
+  width: 32px;
+  height: 2px;
+  border: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.35);
+  transition: 0.3s ease;
+}
+
+.hero-dots button.active {
+  width: 60px;
+  background: var(--white);
+}
+
+/* =========================================
    INTRO
-===================================================== */
+========================================= */
 
 .intro-section {
-  padding: 115px 9%;
-
   background: var(--cream);
-
-  border-top: 1px solid var(--border);
-
-  border-bottom: 1px solid var(--border);
+  padding: 110px 0;
 }
 
 .intro-grid {
   display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 70px;
+}
 
-  grid-template-columns: 1.2fr 0.65fr;
+.intro-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--light-text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
 
-  gap: 100px;
+.intro-label span:first-child {
+  font-family: var(--heading);
+  color: var(--burgundy);
+  font-size: 20px;
+  font-weight: 400;
+}
 
-  margin-top: 32px;
+.intro-content {
+  max-width: 900px;
+}
 
+.large-intro {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(34px, 4vw, 55px);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.section-heading {
+  margin-bottom: 70px;
+}
+
+.split-heading {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
   align-items: end;
 }
 
-.intro-grid h2 {
+.section-heading h2,
+.contact-heading h2,
+.treatments-intro h2,
+.why-content h2,
+.appointment-copy h2 {
   margin: 0;
-
   font-family: var(--heading);
-
-  font-size: clamp(45px, 5vw, 72px);
-
+  font-size: clamp(45px, 5vw, 68px);
+  line-height: 1.05;
   font-weight: 500;
-
-  line-height: 1.03;
-
-  letter-spacing: -2px;
+  letter-spacing: -1.8px;
 }
 
-.intro-grid h2 em {
-  color: var(--red);
-}
-
-.intro-grid p {
+.split-heading > p {
   margin: 0;
-
   color: var(--muted);
-
-  font-size: 13px;
-
+  font-size: 14px;
   line-height: 1.9;
+  max-width: 480px;
 }
 
-.intro-line {
-  width: 100%;
-
-  height: 1px;
-
-  margin-top: 75px;
-
-  background: var(--border);
+.centered-heading {
+  text-align: center;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* =====================================================
+.centered-heading .eyebrow {
+  justify-content: center;
+}
+
+.centered-heading > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 25px auto 0;
+}
+
+/* =========================================
    ABOUT
-===================================================== */
+========================================= */
 
 .about-section {
-  padding: 135px 8%;
+  background: var(--white);
+}
 
+.about-grid {
   display: grid;
-
-  grid-template-columns: 0.85fr 1fr;
-
-  gap: 110px;
-
+  grid-template-columns: 1fr 0.82fr;
+  gap: 100px;
   align-items: center;
 }
 
-.about-visual {
+.about-image {
   position: relative;
-
-  height: 560px;
+  height: 650px;
 }
 
-.about-photo {
-  width: 390px;
-  height: 520px;
-
-  border-radius: 200px 200px 25px 25px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(118, 37, 49, 0.02),
-      rgba(118, 37, 49, 0.12)
-    ),
-    url("https://images.unsplash.com/photo-1542884748-2b87b36c6b90?auto=format&fit=crop&w=1000&q=85")
-      center / cover;
-
-  box-shadow: 0 30px 65px rgba(92, 27, 37, 0.12);
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.about-photo::after {
-  content: "";
-
+.image-badge {
   position: absolute;
-
-  left: 20px;
-
-  top: 20px;
-
-  width: 390px;
-  height: 520px;
-
-  border: 1px solid var(--blush-dark);
-
-  border-radius: 200px 200px 25px 25px;
-
-  z-index: -1;
-}
-
-.about-small-card {
-  position: absolute;
-
+  bottom: 0;
   right: 0;
-
-  bottom: 35px;
-
-  width: 175px;
-
-  padding: 23px;
-
-  background: white;
-
-  border: 1px solid var(--border);
-
-  box-shadow: 0 20px 45px rgba(92, 27, 37, 0.1);
-}
-
-.about-small-card span {
-  color: var(--red);
-
-  font-size: 7px;
-
-  letter-spacing: 2px;
-}
-
-.about-small-card strong {
-  display: block;
-
-  margin-top: 13px;
-
-  font-family: var(--heading);
-
-  font-size: 24px;
-
-  font-weight: 500;
-
-  line-height: 1.05;
-}
-
-.about-content h2 {
-  margin: 24px 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(48px, 5vw, 72px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-}
-
-.about-content h2 em {
-  color: var(--red);
-}
-
-.about-content p {
-  max-width: 580px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-  line-height: 1.9;
-}
-
-.outline-button {
-  margin-top: 18px;
-
-  padding: 14px 20px;
-
-  border: 1px solid var(--burgundy);
-
-  border-radius: 30px;
-
-  background: white;
-
-  color: var(--burgundy);
-
-  cursor: pointer;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  transition: 0.3s ease;
-}
-
-.outline-button span {
-  margin-left: 10px;
-}
-
-.outline-button:hover {
+  width: 155px;
+  height: 155px;
   background: var(--burgundy);
-
-  color: white;
-
-  transform: translateY(-2px);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
 }
 
-/* =====================================================
+.image-badge strong {
+  font-family: var(--heading);
+  font-size: 34px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.image-badge span {
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.about-copy {
+  padding-right: 20px;
+}
+
+.about-lead {
+  margin: 0 0 28px;
+  font-family: var(--heading);
+  font-size: 31px;
+  line-height: 1.25;
+  color: var(--burgundy-dark);
+}
+
+.about-copy > p:not(.about-lead) {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+  margin: 0 0 20px;
+}
+
+.about-signature {
+  margin-top: 45px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.about-signature span {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.about-signature small {
+  margin-top: 4px;
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* =========================================
    THERAPIES
-===================================================== */
+========================================= */
 
 .therapies-section {
-  padding: 125px 7%;
-
   background: var(--cream);
-}
-
-.section-heading {
-  display: grid;
-
-  grid-template-columns: 1fr 0.55fr;
-
-  gap: 90px;
-
-  align-items: end;
-}
-
-.section-heading h2 {
-  margin: 23px 0 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(46px, 5vw, 70px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-}
-
-.section-heading h2 em {
-  color: var(--red);
-}
-
-.section-heading > p {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-  line-height: 1.9;
 }
 
 .therapy-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
-  margin-top: 65px;
-
-  border-top: 1px solid var(--border);
-
-  border-left: 1px solid var(--border);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
 }
 
 .therapy-card {
-  min-height: 335px;
-
-  padding: 32px;
-
+  min-height: 315px;
+  background: var(--white);
+  padding: 34px;
   position: relative;
-
-  background: rgba(255, 255, 255, 0.58);
-
-  border-right: 1px solid var(--border);
-
-  border-bottom: 1px solid var(--border);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    background 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .therapy-card:hover {
-  background: white;
-
   transform: translateY(-7px);
-
-  box-shadow: 0 25px 55px rgba(118, 37, 49, 0.1);
-
+  background: #fff7f8;
+  box-shadow: 0 20px 50px rgba(169, 71, 92, 0.12);
   z-index: 2;
 }
 
-.therapy-card-top {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-}
-
-.therapy-card-top > span {
-  color: var(--red);
-
+.card-number {
   font-family: var(--heading);
-
-  font-size: 16px;
-}
-
-.therapy-card-top button {
-  width: 34px;
-  height: 34px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 50%;
-
-  background: white;
-
+  font-size: 20px;
   color: var(--burgundy);
-
-  cursor: pointer;
-
-  transition: 0.3s;
 }
 
-.therapy-card:hover .therapy-card-top button {
-  background: var(--burgundy);
-
-  color: white;
-
-  border-color: var(--burgundy);
+.card-arrow {
+  position: absolute;
+  right: 32px;
+  top: 31px;
+  font-size: 21px;
+  color: var(--light-text);
+  transition: 0.3s ease;
 }
 
-.therapy-icon {
-  margin-top: 42px;
-
-  color: var(--rose);
-
-  font-size: 17px;
+.therapy-card:hover .card-arrow {
+  color: var(--burgundy);
+  transform: translate(3px, -3px);
 }
 
 .therapy-card h3 {
-  margin: 12px 0;
-
+  margin: 75px 0 18px;
   font-family: var(--heading);
-
-  font-size: 25px;
-
+  font-size: 28px;
   font-weight: 500;
-
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .therapy-card p {
-  max-width: 360px;
-
   margin: 0;
-
   color: var(--muted);
-
-  font-size: 11px;
-
+  font-size: 13px;
   line-height: 1.8;
 }
 
-.therapy-link {
-  position: absolute;
-
-  left: 32px;
-
-  bottom: 25px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: var(--red);
-
-  cursor: pointer;
-
-  font-size: 9px;
-
-  font-weight: 800;
-}
-
-.therapy-link span {
-  margin-left: 7px;
-}
-
-/* =====================================================
+/* =========================================
    TREATMENTS
-===================================================== */
+========================================= */
 
 .treatments-section {
-  padding: 135px 8%;
+  background: var(--white);
+}
 
+.treatments-grid {
   display: grid;
-
-  grid-template-columns: 0.72fr 1fr;
-
+  grid-template-columns: 0.82fr 1.18fr;
   gap: 110px;
 }
 
-.treatment-content h2 {
-  margin: 25px 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(46px, 5vw, 68px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-}
-
-.treatment-content h2 em {
-  color: var(--red);
-}
-
-.treatment-content p {
-  max-width: 480px;
-
+.treatments-intro p {
+  margin: 30px 0 35px;
+  max-width: 450px;
   color: var(--muted);
-
-  font-size: 13px;
-
+  font-size: 14px;
   line-height: 1.9;
 }
 
@@ -1257,1414 +659,972 @@ button:focus-visible {
 
 .treatment-item {
   width: 100%;
-
-  display: grid;
-
-  grid-template-columns: 55px 1fr 25px;
-
-  align-items: center;
-
-  padding: 19px 4px;
-
   border: 0;
-
   border-bottom: 1px solid var(--border);
-
   background: transparent;
-
-  color: var(--text);
-
-  cursor: pointer;
-
+  padding: 19px 0;
+  display: grid;
+  grid-template-columns: 55px 1fr 30px;
   text-align: left;
-
-  transition: 0.25s ease;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
 }
 
-.treatment-item:hover {
-  padding-left: 14px;
-
-  color: var(--red);
-
-  background: var(--cream);
-}
-
-.treatment-item span {
-  color: var(--rose);
-
+.treatment-item > span:first-child {
   font-family: var(--heading);
-
-  font-size: 12px;
+  color: var(--burgundy);
+  font-size: 15px;
 }
 
 .treatment-item strong {
-  font-family: var(--heading);
-
-  font-size: 18px;
-
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.treatment-item i {
-  color: var(--red);
-
-  font-style: normal;
+.treatment-arrow {
+  color: var(--light-text);
+  font-size: 17px;
+  transition: 0.3s ease;
 }
 
-/* =====================================================
+.treatment-item:hover {
+  padding-left: 12px;
+  color: var(--burgundy-dark);
+}
+
+.treatment-item:hover .treatment-arrow {
+  transform: translateX(5px);
+  color: var(--burgundy);
+}
+
+/* =========================================
    JOURNEY
-===================================================== */
+========================================= */
 
 .journey-section {
-  padding: 130px 8%;
+  background: var(--blush);
+}
 
+.journey-grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(169, 71, 92, 0.15);
+}
 
-  grid-template-columns: 0.75fr 1fr;
+.journey-card {
+  background: var(--blush);
+  min-height: 270px;
+  padding: 35px;
+  position: relative;
+}
 
-  gap: 110px;
-
+.journey-card.featured {
   background: var(--burgundy);
-
-  color: white;
+  color: var(--white);
 }
 
-.journey-heading h2 {
-  margin: 28px 0;
-
+.journey-card > span {
   font-family: var(--heading);
-
-  font-size: clamp(50px, 5vw, 72px);
-
-  font-weight: 500;
-
-  line-height: 0.98;
+  font-size: 20px;
+  color: var(--burgundy-dark);
 }
 
-.journey-heading h2 em {
-  color: #edbdc4;
+.journey-card.featured > span {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.journey-heading p {
-  max-width: 460px;
-
-  color: #e6cdd1;
-
-  font-size: 13px;
-
-  line-height: 1.9;
-}
-
-.journey-list {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.journey-item {
-  display: grid;
-
-  grid-template-columns: 55px 1fr 30px;
-
-  align-items: center;
-
-  gap: 15px;
-
-  padding: 27px 0;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.journey-item > span {
-  color: #d99da6;
-
+.journey-card h3 {
+  margin: 85px 0 15px;
   font-family: var(--heading);
-
-  font-size: 14px;
-}
-
-.journey-item h3 {
-  margin: 0 0 7px;
-
-  font-family: var(--heading);
-
-  font-size: 23px;
-
+  font-size: 29px;
   font-weight: 500;
 }
 
-.journey-item p {
+.journey-card p {
   margin: 0;
-
-  color: #e4cbd0;
-
-  font-size: 11px;
-
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
 }
 
-.journey-item b {
-  color: #e1abb3;
-
-  font-size: 14px;
+.journey-card.featured p {
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* =====================================================
-   WHY US
-===================================================== */
+/* =========================================
+   WHY
+========================================= */
 
 .why-section {
-  padding: 130px 8%;
+  background: var(--white);
 }
 
-.why-header {
+.why-grid {
   display: grid;
-
-  grid-template-columns: 1fr 0.5fr;
-
+  grid-template-columns: 0.95fr 1.05fr;
   gap: 100px;
-
-  align-items: end;
+  align-items: center;
 }
 
-.why-header h2 {
-  margin: 25px 0 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(47px, 5vw, 70px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
+.why-image {
+  height: 700px;
+  position: relative;
 }
 
-.why-header h2 em {
-  color: var(--red);
+.why-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.why-header > p {
-  margin: 0;
+.why-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  background: linear-gradient(
+    to top,
+    rgba(37, 25, 28, 0.72),
+    transparent
+  );
+}
 
+.why-overlay span {
+  color: var(--white);
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.why-intro {
+  margin: 30px 0 40px;
   color: var(--muted);
-
-  font-size: 13px;
-
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 520px;
 }
 
-.benefit-grid {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  margin-top: 75px;
-
+.benefits-list {
   border-top: 1px solid var(--border);
 }
 
-.benefit-card {
-  min-height: 290px;
-
-  padding: 30px;
-
-  border-right: 1px solid var(--border);
-
+.benefit-row {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 20px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.benefit-card:last-child {
-  border-right: 0;
-}
-
-.benefit-card > span {
-  color: var(--red);
-
+.benefit-number {
   font-family: var(--heading);
-
-  font-size: 16px;
+  color: var(--burgundy);
+  font-size: 17px;
 }
 
-.benefit-line {
-  width: 28px;
-
-  height: 1px;
-
-  margin-top: 35px;
-
-  background: var(--blush-dark);
-}
-
-.benefit-card h3 {
-  margin: 35px 0 13px;
-
+.benefit-row h3 {
+  margin: 0 0 7px;
   font-family: var(--heading);
-
-  font-size: 22px;
-
+  font-size: 23px;
   font-weight: 500;
 }
 
-.benefit-card p {
+.benefit-row p {
   margin: 0;
-
   color: var(--muted);
-
-  font-size: 11px;
-
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.75;
+  max-width: 470px;
 }
 
-/* =====================================================
+/* =========================================
    TESTIMONIAL
-===================================================== */
+========================================= */
 
 .testimonial-section {
-  position: relative;
+  background: var(--burgundy-dark);
+  color: var(--white);
+}
 
-  padding: 135px 8%;
-
+.testimonial-inner {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
-
-  background: var(--cream);
-
-  border-top: 1px solid var(--border);
-
-  border-bottom: 1px solid var(--border);
 }
 
-.testimonial-decoration {
-  position: absolute;
-
-  left: 8%;
-
-  top: 65px;
-
-  color: var(--blush-dark);
-
-  font-family: var(--heading);
-
-  font-size: 120px;
-
-  line-height: 1;
-}
-
-.testimonial-content {
-  max-width: 850px;
-
-  margin: 55px auto 0;
-
-  animation: testimonialIn 0.55s ease both;
-}
-
-@keyframes testimonialIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.testimonial-content blockquote {
-  margin: 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(31px, 4vw, 52px);
-
-  font-weight: 500;
-
-  line-height: 1.18;
-
-  letter-spacing: -1px;
-}
-
-.testimonial-author {
-  display: flex;
-
+.testimonial-inner .eyebrow {
   justify-content: center;
-
-  align-items: center;
-
-  gap: 13px;
-
-  margin-top: 35px;
 }
 
-.testimonial-author > span {
-  width: 28px;
-  height: 1px;
-
-  background: var(--red);
+.quote-mark {
+  margin-top: 20px;
+  font-family: Georgia, serif;
+  font-size: 100px;
+  line-height: 0.7;
+  opacity: 0.4;
 }
 
-.testimonial-author strong {
-  display: block;
+.testimonial-inner blockquote {
+  margin: 25px auto 35px;
+  font-family: var(--heading);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.25;
+  font-weight: 400;
+  max-width: 820px;
+}
 
-  color: var(--burgundy);
+.testimonial-person {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
+.testimonial-person strong {
+  font-size: 11px;
+  letter-spacing: 1.3px;
+}
+
+.testimonial-person span {
   font-size: 10px;
-
-  letter-spacing: 1px;
-}
-
-.testimonial-author small {
-  display: block;
-
-  margin-top: 5px;
-
-  color: var(--rose);
-
-  font-size: 7px;
-
-  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .testimonial-controls {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  gap: 18px;
-
   margin-top: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
 }
 
-.testimonial-controls > button {
-  width: 34px;
-  height: 34px;
-
-  border: 1px solid var(--border);
-
+.testimonial-controls button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  background: transparent;
   border-radius: 50%;
+  transition: 0.3s ease;
+}
 
-  background: white;
-
-  color: var(--burgundy);
-
-  cursor: pointer;
+.testimonial-controls button:hover {
+  background: var(--white);
+  color: var(--burgundy-dark);
 }
 
 .testimonial-controls > div {
   display: flex;
-
   gap: 6px;
 }
 
-.testimonial-controls > div button {
+.testimonial-controls > div span {
   width: 20px;
   height: 2px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: #decacc;
-
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.testimonial-controls > div button.active {
-  width: 34px;
-
-  background: var(--red);
+.testimonial-controls > div span.active {
+  width: 35px;
+  background: var(--white);
 }
 
-/* =====================================================
+/* =========================================
    APPOINTMENT
-===================================================== */
+========================================= */
 
 .appointment-section {
-  padding: 110px 8%;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 60px;
-}
-
-.appointment-section h2 {
-  margin: 24px 0 14px;
-
-  font-family: var(--heading);
-
-  font-size: clamp(47px, 5vw, 68px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-}
-
-.appointment-section h2 em {
-  color: var(--red);
-}
-
-.appointment-section p {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-  line-height: 1.8;
-}
-
-.large-book-button {
-  min-width: 225px;
-
-  padding: 20px 24px;
-
-  border: 0;
-
-  border-radius: 40px;
-
-  background: var(--burgundy);
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  box-shadow: 0 15px 35px rgba(118, 37, 49, 0.15);
-
-  transition: 0.3s;
-}
-
-.large-book-button span {
-  margin-left: 12px;
-}
-
-.large-book-button:hover {
-  background: var(--red);
-
-  transform: translateY(-3px);
-}
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact-section {
-  padding: 125px 8%;
-
   background: var(--cream);
 }
 
-.contact-heading {
-  max-width: 850px;
+.appointment-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 100px;
+  align-items: start;
 }
 
-.contact-heading h2 {
-  margin: 25px 0;
-
-  font-family: var(--heading);
-
-  font-size: clamp(48px, 5vw, 70px);
-
-  font-weight: 500;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-}
-
-.contact-heading h2 em {
-  color: var(--red);
-}
-
-.contact-heading p {
-  max-width: 570px;
-
-  margin: 0;
-
+.appointment-copy > p {
+  margin: 30px 0;
+  max-width: 480px;
   color: var(--muted);
-
-  font-size: 13px;
-
+  font-size: 14px;
   line-height: 1.9;
 }
 
-.contact-box {
+.appointment-note {
+  margin-top: 50px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
   display: grid;
-
-  grid-template-columns: 0.68fr 1fr;
-
-  margin-top: 65px;
-
-  background: white;
-
-  border: 1px solid var(--border);
-
-  box-shadow: 0 25px 70px rgba(118, 37, 49, 0.08);
-}
-
-.contact-information {
-  padding: 50px;
-
-  background: var(--burgundy);
-
-  color: white;
-}
-
-.contact-brand-mark {
-  width: 48px;
-  height: 48px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 50%;
-
-  background: white;
-
-  color: var(--burgundy);
-
-  font-family: var(--heading);
-
-  font-size: 25px;
-}
-
-.contact-information h3 {
-  margin: 23px 0 10px;
-
-  font-size: 17px;
-
-  letter-spacing: 2px;
-
-  line-height: 1.35;
-}
-
-.contact-information h3 em {
-  color: #e5b8be;
-
-  font-size: 7px;
-
-  font-style: normal;
-
-  letter-spacing: 1.7px;
-}
-
-.contact-information > p {
-  margin: 0 0 40px;
-
-  color: #e4cbd0;
-
-  font-family: var(--heading);
-
-  font-size: 17px;
-
-  line-height: 1.4;
-}
-
-.contact-detail {
-  padding: 17px 0;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.contact-detail span {
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: #d99da6;
-
-  font-size: 7px;
-
-  letter-spacing: 2px;
-}
-
-.contact-detail strong {
-  font-size: 11px;
-
-  font-weight: 500;
-}
-
-.appointment-form {
-  padding: 50px;
-
-  display: flex;
-
-  flex-direction: column;
-
+  grid-template-columns: 40px 1fr;
   gap: 15px;
 }
 
+.appointment-note > span {
+  font-family: var(--heading);
+  color: var(--burgundy);
+  font-size: 18px;
+}
+
+.appointment-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.appointment-form {
+  background: var(--white);
+  padding: 50px;
+  box-shadow: 0 20px 70px rgba(75, 37, 45, 0.08);
+}
+
+.form-title {
+  margin-bottom: 30px;
+}
+
 .form-title > span {
-  color: var(--red);
-
-  font-size: 8px;
-
-  font-weight: 800;
-
+  display: block;
+  color: var(--burgundy);
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 2px;
+  margin-bottom: 14px;
 }
 
 .form-title h3 {
-  margin: 13px 0 20px;
-
+  margin: 0;
   font-family: var(--heading);
-
-  font-size: 31px;
-
+  font-size: 38px;
+  line-height: 1.15;
   font-weight: 500;
-
-  line-height: 1.05;
 }
 
 .form-row {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
-  gap: 14px;
+  gap: 15px;
 }
 
 .appointment-form input,
 .appointment-form select,
 .appointment-form textarea {
   width: 100%;
-
-  padding: 15px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 0;
-
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 17px 2px;
   outline: none;
-
-  background: #fffdfd;
-
   color: var(--text);
-
-  font-size: 11px;
-
-  transition: 0.2s;
+  font-size: 13px;
+  margin-bottom: 10px;
+  border-radius: 0;
 }
 
 .appointment-form input:focus,
 .appointment-form select:focus,
 .appointment-form textarea:focus {
-  border-color: var(--rose);
-
-  background: white;
+  border-bottom-color: var(--burgundy);
 }
 
 .appointment-form textarea {
   resize: vertical;
+  min-height: 130px;
+}
+
+.appointment-form input::placeholder,
+.appointment-form textarea::placeholder {
+  color: #a99a9d;
+}
+
+.appointment-form select {
+  color: var(--muted);
 }
 
 .form-submit {
-  align-self: flex-start;
-
-  margin-top: 5px;
-
-  padding: 15px 23px;
-
+  margin-top: 22px;
+  width: 100%;
   border: 0;
-
-  border-radius: 30px;
-
   background: var(--burgundy);
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 10px;
-
+  color: var(--white);
+  padding: 19px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
   font-weight: 700;
-
-  transition: 0.3s;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
 }
 
 .form-submit span {
-  margin-left: 10px;
+  font-size: 19px;
 }
 
 .form-submit:hover {
-  background: var(--red);
-
-  transform: translateY(-2px);
+  background: var(--burgundy-dark);
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* =========================================
+   CONTACT
+========================================= */
 
-.atharva-footer {
-  padding: 70px 8% 25px;
-
-  background: white;
-
-  border-top: 1px solid var(--border);
+.contact-section {
+  background: var(--white);
 }
 
-.footer-main {
-  display: flex;
-
-  justify-content: space-between;
-
-  padding-bottom: 55px;
+.contact-heading {
+  margin-bottom: 65px;
 }
 
-.footer-brand {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 25px;
-}
-
-.footer-logo {
-  display: flex;
-
-  align-items: center;
-
-  gap: 11px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  cursor: pointer;
-
-  text-align: left;
-}
-
-.footer-logo > span {
-  width: 43px;
-  height: 43px;
-
+.contact-grid {
   display: grid;
-  place-items: center;
-
-  border-radius: 50%;
-
-  background: var(--burgundy);
-
-  color: white;
-
-  font-family: var(--heading);
-
-  font-size: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.footer-logo strong {
-  display: block;
-
-  color: var(--burgundy);
-
-  font-size: 15px;
-
-  letter-spacing: 2px;
-}
-
-.footer-logo small {
-  display: block;
-
-  margin-top: 4px;
-
-  color: var(--muted);
-
-  font-size: 7px;
-
-  letter-spacing: 1.5px;
-}
-
-.footer-brand > p {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-family: var(--heading);
-
-  font-size: 18px;
-
-  line-height: 1.4;
-}
-
-.footer-navigation {
+.contact-card {
+  min-height: 260px;
+  padding: 35px 35px 35px 0;
+  border-right: 1px solid var(--border);
   display: flex;
-
-  gap: 100px;
-}
-
-.footer-navigation > div {
-  display: flex;
-
   flex-direction: column;
-
-  gap: 12px;
+  align-items: flex-start;
 }
 
-.footer-navigation span {
-  margin-bottom: 6px;
+.contact-card:not(:first-child) {
+  padding-left: 35px;
+}
 
-  color: var(--red);
+.contact-card:last-child {
+  border-right: 0;
+}
 
-  font-size: 7px;
-
-  font-weight: 800;
-
+.contact-label {
+  color: var(--burgundy);
+  font-size: 9px;
   letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 45px;
 }
 
-.footer-navigation button {
-  padding: 0;
+.contact-card a {
+  font-family: var(--heading);
+  font-size: 24px;
+  line-height: 1.25;
+  transition: 0.3s ease;
+}
 
-  border: 0;
+.contact-card a:hover {
+  color: var(--burgundy);
+}
 
-  background: transparent;
+.contact-card address {
+  font-family: var(--heading);
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.45;
+}
 
+.contact-card small {
+  margin-top: auto;
   color: var(--muted);
-
-  cursor: pointer;
-
-  text-align: left;
-
-  font-size: 10px;
+  font-size: 11px;
+  line-height: 1.6;
 }
 
-.footer-navigation button:hover {
-  color: var(--red);
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+  background: #28191d;
+  color: var(--white);
+  padding-top: 75px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr;
+  gap: 80px;
+  padding-bottom: 65px;
+}
+
+.footer-brand-button {
+  color: var(--white);
+}
+
+.footer-brand p {
+  max-width: 350px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.footer-links > span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.footer-links button,
+.footer-links a {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.footer-links button:hover,
+.footer-links a:hover {
+  color: #f4b9c2;
 }
 
 .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 22px;
+  padding-bottom: 22px;
   display: flex;
-
+  align-items: center;
   justify-content: space-between;
-
-  padding-top: 24px;
-
-  border-top: 1px solid var(--border);
-
-  color: #9a898c;
-
-  font-size: 7px;
-
-  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 9px;
+  letter-spacing: 0.5px;
 }
 
-/* =====================================================
-   FLOATING APPOINTMENT
-===================================================== */
+/* =========================================
+   FLOATING BUTTON
+========================================= */
 
 .floating-appointment {
   position: fixed;
-
   right: 25px;
-
   bottom: 25px;
-
-  z-index: 900;
-
-  width: 62px;
-  height: 62px;
-
-  border: 1px solid rgba(255, 255, 255, 0.35);
-
-  border-radius: 50%;
-
+  z-index: 90;
+  border: 0;
   background: var(--burgundy);
-
-  color: white;
-
-  cursor: pointer;
-
-  box-shadow: 0 15px 35px rgba(92, 27, 37, 0.25);
-
-  transition: 0.3s;
+  color: var(--white);
+  border-radius: 50px;
+  padding: 15px 18px 15px 22px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 12px 35px rgba(169, 71, 92, 0.28);
+  transition: 0.3s ease;
 }
 
 .floating-appointment span {
-  display: block;
-
-  font-size: 6px;
-
-  letter-spacing: 1px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
 }
 
 .floating-appointment strong {
-  display: block;
-
-  margin-top: 3px;
-
-  font-size: 13px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
 }
 
 .floating-appointment:hover {
-  background: var(--red);
-
-  transform: scale(1.08);
+  background: var(--burgundy-dark);
+  transform: translateY(-4px);
 }
 
-/* =====================================================
+/* =========================================
+   FOCUS
+========================================= */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+
+/* =========================================
    TABLET
-===================================================== */
+========================================= */
 
-@media (max-width: 1050px) {
-
-  .desktop-nav {
-    gap: 18px;
+@media (max-width: 1000px) {
+  .container {
+    width: min(100% - 50px, 900px);
   }
 
-  .hero-section {
-    grid-template-columns: 1fr;
-
-    padding-top: 135px;
+  .section-padding {
+    padding: 90px 0;
   }
 
-  .hero-visual {
-    min-height: 540px;
-  }
-
-  .about-section,
-  .treatments-section,
-  .journey-section,
-  .contact-box {
-    grid-template-columns: 1fr;
-  }
-
-  .about-visual {
-    max-width: 500px;
-  }
-
-  .section-heading,
-  .why-header,
-  .intro-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .therapy-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .benefit-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .benefit-card:nth-child(2) {
-    border-right: 0;
-  }
-
-  .appointment-section {
-    align-items: flex-start;
-
-    flex-direction: column;
-  }
-}
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-  .atharva-navbar {
-    height: 70px;
-
-    padding: 0 18px;
-  }
-
-  .desktop-nav {
-    position: absolute;
-
-    top: 70px;
-
-    left: 0;
-    right: 0;
-
-    padding: 20px;
-
-    display: none;
-
-    flex-direction: column;
-
-    align-items: stretch;
-
-    gap: 0;
-
-    background: white;
-
-    border-bottom: 1px solid var(--border);
-
-    box-shadow: 0 15px 35px rgba(118, 37, 49, 0.08);
-  }
-
-  .desktop-nav.mobile-open {
-    display: flex;
-  }
-
-  .desktop-nav button {
-    padding: 15px 5px;
-
-    text-align: left;
-
-    border-bottom: 1px solid var(--border);
-  }
-
-  .desktop-nav button:last-child {
-    border-bottom: 0;
-  }
-
-  .desktop-nav button::after {
-    display: none;
-  }
-
-  .nav-book {
-    display: none;
-  }
-
-  .mobile-menu-button {
-    display: block;
-  }
-
-  .hero-section {
-    min-height: auto;
-
-    padding: 115px 22px 65px;
-
-    display: block;
-  }
-
-  .hero-section::before {
-    display: none;
-  }
-
-  .hero-background-number {
-    top: 100px;
-
-    right: 10px;
-
-    font-size: 110px;
-  }
-
-  .hero-content h1 {
-    font-size: 59px;
-
-    letter-spacing: -2.5px;
-  }
-
-  .hero-content p {
-    font-size: 13px;
-  }
-
-  .hero-buttons {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  .hero-bottom {
-    display: block;
-
-    margin-top: 50px;
-  }
-
-  .hero-features {
+  .main-nav {
     gap: 17px;
-
-    flex-wrap: wrap;
   }
 
-  .hero-features span {
-    font-size: 7px;
+  .main-nav button {
+    font-size: 10px;
   }
 
-  .carousel-controls {
-    margin-top: 30px;
+  .hero-section {
+    min-height: 760px;
   }
 
-  .hero-visual {
-    min-height: 460px;
-
-    margin-top: 35px;
-  }
-
-  .hero-photo {
-    width: 285px;
-    height: 390px;
-  }
-
-  .hero-photo-border {
-    width: 285px;
-    height: 390px;
-  }
-
-  .hero-info-card {
-    left: 0;
-
-    bottom: 25px;
-
-    width: 160px;
-
-    padding: 18px;
-  }
-
-  .hero-info-card strong {
-    font-size: 18px;
-  }
-
-  .hero-badge {
-    right: 0;
-
-    top: 15px;
-
-    width: 90px;
-    height: 90px;
-  }
-
-  .hero-badge span {
-    font-size: 12px;
-  }
-
-  .hero-badge small {
-    font-size: 5px;
-  }
-
-  .intro-section,
-  .about-section,
-  .therapies-section,
-  .treatments-section,
-  .journey-section,
-  .why-section,
-  .testimonial-section,
-  .appointment-section,
-  .contact-section {
-    padding: 80px 22px;
-  }
-
-  .intro-grid h2,
-  .about-content h2,
-  .section-heading h2,
-  .treatment-content h2,
-  .why-header h2,
-  .appointment-section h2,
-  .contact-heading h2 {
-    font-size: 45px;
-
-    letter-spacing: -1px;
-  }
-
-  .intro-grid {
-    gap: 30px;
-  }
-
-  .about-section {
-    gap: 65px;
-  }
-
-  .about-visual {
-    height: 460px;
-  }
-
-  .about-photo {
-    width: 285px;
-    height: 410px;
-  }
-
-  .about-photo::after {
-    width: 285px;
-    height: 410px;
-  }
-
-  .about-small-card {
-    width: 145px;
-
-    right: 0;
-
-    bottom: 15px;
-
-    padding: 18px;
-  }
-
-  .about-small-card strong {
-    font-size: 19px;
-  }
-
-  .section-heading {
-    gap: 30px;
+  .about-grid,
+  .why-grid,
+  .appointment-grid {
+    gap: 55px;
   }
 
   .therapy-grid {
-    grid-template-columns: 1fr;
-
-    margin-top: 45px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .therapy-card {
-    min-height: 310px;
+  .journey-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .treatments-section {
+  .treatments-grid {
     gap: 60px;
   }
 
-  .treatment-item {
-    grid-template-columns: 38px 1fr 20px;
+  .contact-card a {
+    font-size: 19px;
   }
 
-  .treatment-item strong {
-    font-size: 16px;
+  .contact-card address {
+    font-size: 17px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 36px);
   }
 
-  .journey-section {
-    gap: 65px;
+  .section-padding {
+    padding: 75px 0;
   }
 
-  .journey-heading h2 {
-    font-size: 48px;
+  .site-header {
+    padding: 20px 0;
   }
 
-  .why-header {
+  .brand-mark {
+    width: 39px;
+    height: 39px;
+    font-size: 21px;
+  }
+
+  .brand-text strong {
+    font-size: 15px;
+  }
+
+  .brand-text small {
+    font-size: 6px;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 76px;
+    left: 18px;
+    right: 18px;
+    padding: 22px;
+    background: var(--white);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    box-shadow: 0 20px 50px rgba(37, 25, 28, 0.16);
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav button {
+    color: var(--text);
+    text-align: left;
+    padding: 13px 5px;
+  }
+
+  .main-nav .nav-appointment {
+    margin-top: 10px;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--burgundy);
+    color: var(--white);
+  }
+
+  .hero-section {
+    min-height: 720px;
+    height: 100vh;
+    background-position: 60% center;
+  }
+
+  .hero-content {
+    padding-top: 75px;
+    min-height: 600px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(50px, 15vw, 72px);
+    letter-spacing: -2px;
+  }
+
+  .hero-copy p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-top: 25px;
+  }
+
+  .hero-actions {
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .primary-button {
+    padding: 15px 18px;
+  }
+
+  .hero-bottom {
+    bottom: 28px;
+  }
+
+  .intro-section {
+    padding: 70px 0;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 
-  .benefit-grid {
+  .large-intro {
+    font-size: 32px;
+  }
+
+  .split-heading {
     grid-template-columns: 1fr;
-
-    margin-top: 50px;
+    gap: 25px;
   }
 
-  .benefit-card {
-    min-height: 235px;
-
-    border-right: 0;
+  .section-heading {
+    margin-bottom: 45px;
   }
 
-  .testimonial-decoration {
-    left: 20px;
-
-    top: 45px;
+  .section-heading h2,
+  .contact-heading h2,
+  .treatments-intro h2,
+  .why-content h2,
+  .appointment-copy h2 {
+    font-size: 43px;
   }
 
-  .testimonial-content {
-    margin-top: 50px;
+  .about-grid,
+  .why-grid,
+  .appointment-grid,
+  .treatments-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
   }
 
-  .testimonial-content blockquote {
+  .about-image,
+  .why-image {
+    height: 500px;
+  }
+
+  .about-copy {
+    padding-right: 0;
+  }
+
+  .therapy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .therapy-card {
+    min-height: 280px;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-card {
+    min-height: 230px;
+  }
+
+  .journey-card h3 {
+    margin-top: 55px;
+  }
+
+  .treatment-item {
+    grid-template-columns: 40px 1fr 25px;
+  }
+
+  .why-image {
+    order: 2;
+  }
+
+  .why-content {
+    order: 1;
+  }
+
+  .testimonial-inner blockquote {
     font-size: 30px;
   }
 
-  .contact-box {
-    margin-top: 45px;
-  }
-
-  .contact-information,
   .appointment-form {
-    padding: 30px;
+    padding: 30px 23px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
-  .footer-main {
-    display: block;
+  .form-title h3 {
+    font-size: 32px;
   }
 
-  .footer-navigation {
-    gap: 60px;
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 
-    margin-top: 50px;
+  .contact-card,
+  .contact-card:not(:first-child) {
+    min-height: 220px;
+    padding: 30px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-card:last-child {
+    border-bottom: 0;
+  }
+
+  .contact-label {
+    margin-bottom: 30px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding-bottom: 45px;
   }
 
   .footer-bottom {
-    display: block;
-
-    line-height: 2;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .floating-appointment {
-    right: 17px;
+    right: 15px;
+    bottom: 15px;
+    padding: 12px 14px 12px 17px;
+  }
 
-    bottom: 17px;
-
-    width: 56px;
-    height: 56px;
+  .floating-appointment span {
+    font-size: 8px;
   }
 }
 
-/* =====================================================
+/* =========================================
    SMALL MOBILE
-===================================================== */
+========================================= */
 
 @media (max-width: 420px) {
-
-  .logo-symbol {
-    width: 37px;
-    height: 37px;
-
-    font-size: 20px;
+  .hero-copy h1 {
+    font-size: 48px;
   }
 
-  .logo-copy strong {
-    font-size: 13px;
-  }
-
-  .hero-content h1 {
-    font-size: 52px;
-  }
-
-  .hero-features {
-    gap: 12px;
-  }
-
-  .hero-features div {
-    gap: 6px;
-  }
-
-  .hero-features strong {
-    font-size: 13px;
-  }
-
-  .hero-photo {
-    width: 260px;
-    height: 365px;
-  }
-
-  .hero-photo-border {
-    width: 260px;
-    height: 365px;
-  }
-
-  .hero-info-card {
-    width: 145px;
-  }
-
-  .intro-grid h2,
-  .about-content h2,
   .section-heading h2,
-  .treatment-content h2,
-  .appointment-section h2,
-  .contact-heading h2 {
-    font-size: 40px;
+  .contact-heading h2,
+  .treatments-intro h2,
+  .why-content h2,
+  .appointment-copy h2 {
+    font-size: 38px;
   }
 
-  .journey-heading h2 {
-    font-size: 43px;
+  .large-intro {
+    font-size: 29px;
   }
 
-  .testimonial-content blockquote {
+  .about-image,
+  .why-image {
+    height: 420px;
+  }
+
+  .image-badge {
+    width: 125px;
+    height: 125px;
+    padding: 18px;
+  }
+
+  .image-badge strong {
     font-size: 27px;
   }
+
+  .therapy-card {
+    padding: 27px;
+  }
+
+  .therapy-card h3 {
+    font-size: 25px;
+  }
+
+  .floating-appointment {
+    left: 15px;
+    right: 15px;
+    justify-content: center;
+  }
+}
+
+
+
+.brand-logo {
+  width: 60px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: screen;
+  filter: contrast(1.2) brightness(1.1);
 }
