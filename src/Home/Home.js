@@ -1291,7 +1291,7 @@ Please contact me regarding my appointment.`;
 
             <span className="brand-text">
               <strong>ATHARVA</strong>
-              <small>PHYSIO & REHAB CENTER</small>
+              <small>PHYSIOCARE & REHAB CENTER</small>
             </span>
           </button>
 
